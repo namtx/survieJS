@@ -22,6 +22,8 @@ export default class App extends Component {
                 },
             ],
         };
+
+        this.addNote = this.addNote.bind(this);
     }
     render() {
         const notes = this.state.notes;
@@ -33,7 +35,13 @@ export default class App extends Component {
             </div>
         );
     }
+
     addNote() {
-        console.log('Added');
+        this.setState({
+            notes: this.state.notes.concat([{
+                id: uuid.v4(),
+                task: 'New Task',
+            }])
+        });
     }
 }
